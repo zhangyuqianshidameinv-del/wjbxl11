@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个人网站 - 专业简历展示</title>
+    <meta name="description" content="专业的个人网站，展示个人能力和形象">
+    <style>
+/* 全局样式重置和基础设置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: #1d1d1f;
+    background-color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* 容器样式 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 导航栏样式 */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.nav-logo .logo-text {
+    font-size: 24px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #689f38, #558b2f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #1d1d1f;
+    font-weight: 500;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+.nav-link:hover {
+    color: #689f38;
+    background: rgba(104, 159, 56, 0.08);
+    transform: translateY(-2px);
+}
+
+/* 主要内容区域 */
+main {
+    margin-top: 70px;
+}
+
+/* 首页英雄区域 */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #f1f8e9 0%, #e8f5e8 50%, #dcedc8 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content {
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    position: relative;
+}
+
+.highlight {
+    background: linear-gradient(135deg, #689f38, #558b2f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    display: inline-block;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    color: #6c757d;
+    margin-bottom: 40px;
+    font-weight: 400;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.4s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #689f38, #558b2f);
+    color: white;
+    box-shadow: 0 10px 30px rgba(104, 159, 56, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(104, 159, 56, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #689f38;
+    border: 2px solid #689f38;
+}
+
+.btn-secondary:hover {
+    color: white;
+    background: #689f38;
+    transform: translateY(-4px);
+}
+
+/* 虚拟形象区域 */
+.hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInRight 1s ease-out 0.3s both;
+}
+
+.virtual-avatar {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.virtual-avatar:hover {
+    transform: scale(1.05);
+}
+
+.avatar-image {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #689f38;
+    box-shadow: 0 20px 60px rgba(104, 159, 56, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.avatar-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 340px;
+    height: 340px;
+    background: radial-gradient(circle, rgba(104, 159, 56, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: glow 3s ease-in-out infinite alternate;
+    z-index: 1;
+}
+
+@keyframes glow {
+    from {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.6;
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.3;
+    }
+}
+
+/* 关于我部分 */
+.about-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #ffffff 0%, #f9fbe7 100%);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 60px;
+    color: #1d1d1f;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-text h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 30px 0 15px 0;
+    color: #1d1d1f;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    color: #6c757d;
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 25px;
+    background: rgba(241, 248, 233, 0.6);
+    border: 1px solid rgba(104, 159, 56, 0.2);
+    border-radius: 15px;
+    transition: all 0.5s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.skill-item:hover {
+    background: linear-gradient(135deg, 
+        rgba(104, 159, 56, 0.15), 
+        rgba(241, 248, 233, 0.9), 
+        rgba(104, 159, 56, 0.1)
+    );
+    border-color: rgba(104, 159, 56, 0.5);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(104, 159, 56, 0.2);
+}
+
+.skill-icon {
+    font-size: 2.5rem;
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.skill-item:hover .skill-icon {
+    transform: rotateY(360deg) scale(1.2);
+}
+
+.skill-item span {
+    font-weight: 600;
+    color: #1d1d1f;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.skill-item:hover span {
+    color: #558b2f;
+    transform: translateX(3px);
+}
+
+/* 联系方式部分 */
+.contact-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #f1f8e9 0%, #f9fbe7 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.social-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    text-decoration: none;
+    color: #1d1d1f;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 30px rgba(104, 159, 56, 0.1);
+    border: 1px solid rgba(104, 159, 56, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-link:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 60px rgba(104, 159, 56, 0.2);
+    border-color: rgba(104, 159, 56, 0.3);
+    background: rgba(255, 255, 255, 1);
+}
+
+.social-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #689f38, #558b2f);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: relative;
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+.social-link:hover .social-icon {
+    transform: rotateY(180deg) scale(1.1);
+    box-shadow: 0 10px 25px rgba(104, 159, 56, 0.4);
+}
+
+.social-icon svg {
+    width: 30px;
+    height: 30px;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover .social-icon svg {
+    transform: rotateY(180deg);
+}
+
+.social-link span {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover span {
+    color: #689f38;
+    transform: translateY(-2px);
+}
+
+.social-link small {
+    color: #6c757d;
+    font-size: 14px;
+    text-align: center;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.social-link:hover small {
+    color: #558b2f;
+    opacity: 1;
+}
+
+/* 微信二维码弹窗样式 */
+.wechat-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.wechat-modal.show {
+    opacity: 1;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 20px;
+    padding: 0;
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+    transform: scale(0.8) translateY(50px);
+    transition: all 0.3s ease;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.wechat-modal.show .modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #07c160, #06ad56);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
+.modal-body {
+    padding: 30px;
+    text-align: center;
+}
+
+.qr-code-image {
+    width: 250px;
+    height: 250px;
+    object-fit: contain;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 3px solid #f5f5f5;
+    transition: all 0.3s ease;
+}
+
+.qr-code-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.qr-tip {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.wechat-info {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 12px;
+    border-left: 4px solid #07c160;
+}
+
+.wechat-id {
+    color: #07c160;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+/* 页脚 */
+.footer {
+    background: #1d1d1f;
+    color: white;
+    text-align: center;
+    padding: 40px 0;
+}
+
+.footer p {
+    color: #86868b;
+}
+
+/* 动画效果 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .virtual-avatar {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .avatar-image {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .social-links {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-container {
+        padding: 0 15px;
+    }
+    
+    .hero-container {
+        padding: 0 15px;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .btn {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+    
+    .virtual-avatar {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .avatar-image {
+        width: 200px;
+        height: 200px;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">zhangyuqian</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">首页</a></li>
+                <li><a href="#about" class="nav-link">关于我</a></li>
+                <li><a href="#contact" class="nav-link">联系方式</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主要内容区域 -->
+    <main>
+        <!-- 首页部分 -->
+        <section id="home" class="hero-section">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">你好，我是 <span class="highlight">张宇茜</span></h1>
+                    <p class="hero-subtitle">欢迎来到我的个人世界</p>
+                    <div class="hero-buttons">
+                        <a href="#about" class="btn btn-primary">了解更多</a>
+                        <a href="#contact" class="btn btn-secondary">联系我</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="ai-avatar-container">
+                        <div class="virtual-avatar">
+                            <img src="ChatGPT Image 2025年8月24日 18_23_06.png" alt="我的虚拟形象" class="avatar-image">
+                            <div class="avatar-glow"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 关于我部分 -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2 class="section-title">关于我</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>个人简介</h3>
+                        <p>我是一名充满激情和创造力的年轻人，热爱学习和探索新事物。我具备良好的沟通能力和团队合作精神，善于解决问题和接受挑战。</p>
+                        
+                        <h3>技能特长</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item computer-skill">
+                                <div class="skill-icon">💻</div>
+                                <span>计算机技能</span>
+                            </div>
+                            
+                            <div class="skill-item creative-skill">
+                                <div class="skill-icon">🎨</div>
+                                <span>创意设计</span>
+                            </div>
+                            
+                            <div class="skill-item learning-skill">
+                                <div class="skill-icon">📚</div>
+                                <span>学习能力</span>
+                            </div>
+                            
+                            <div class="skill-item teamwork-skill">
+                                <div class="skill-icon">🤝</div>
+                                <span>团队合作</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系方式部分 -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title">联系方式</h2>
+                <div class="social-links">
+                    <a href="#" class="social-link xiaohongshu">
+                        <div class="social-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="2" y="2" width="20" height="20" rx="3" fill="currentColor"/>
+                                <g fill="white">
+                                    <path d="M5 7h1.5v2H8v1H6.5v2H8v1H5V7z"/>
+                                    <path d="M9.5 7H11v1.5h1.5V7H14v6h-1.5v-3H11v3H9.5V7z"/>
+                                    <path d="M15.5 7H19v1h-2v1h1.5v1H17v1h2v1h-3.5V7z"/>
+                                    <circle cx="6.5" cy="15" r="0.5"/>
+                                    <circle cx="12" cy="15" r="0.5"/>
+                                    <circle cx="17.5" cy="15" r="0.5"/>
+                                </g>
+                            </svg>
+                        </div>
+                        <span>小红书</span>
+                        <small>点击查看我的分享</small>
+                    </a>
+                    
+                    <a href="#" class="social-link douyin">
+                        <div class="social-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="2" y="2" width="20" height="20" rx="3" fill="currentColor"/>
+                                <g fill="white">
+                                    <circle cx="8" cy="16" r="2.5"/>
+                                    <rect x="7.5" y="8" width="1" height="8"/>
+                                    <circle cx="16" cy="14" r="2"/>
+                                    <rect x="15.5" y="6" width="1" height="8"/>
+                                    <path d="M8.5 8 Q12 6 15.5 6" stroke="white" stroke-width="1" fill="none"/>
+                                    <path d="M8.5 10 Q12 8 15.5 8" stroke="white" stroke-width="0.8" fill="none"/>
+                                    <circle cx="12" cy="6" r="0.8"/>
+                                    <circle cx="10" cy="5" r="0.6"/>
+                                    <circle cx="14" cy="5" r="0.6"/>
+                                </g>
+                            </svg>
+                        </div>
+                        <span>抖音</span>
+                        <small>观看我的视频</small>
+                    </a>
+                    
+                    <a href="#" class="social-link wechat" onclick="openWechatQR()">
+                        <div class="social-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="2" y="2" width="20" height="20" rx="3" fill="currentColor"/>
+                                <g fill="white">
+                                    <ellipse cx="8" cy="10" rx="4" ry="3"/>
+                                    <circle cx="8" cy="10" r="0.8"/>
+                                    <circle cx="10.5" cy="10" r="0.8"/>
+                                    <ellipse cx="16" cy="13" rx="3" ry="2.5"/>
+                                    <circle cx="15" cy="13" r="0.6"/>
+                                    <circle cx="17" cy="13" r="0.6"/>
+                                    <path d="M12 10 Q14 11 13 13" stroke="white" stroke-width="0.8" fill="none"/>
+                                </g>
+                            </svg>
+                        </div>
+                        <span>微信</span>
+                        <small>扫码添加微信</small>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 微信二维码弹窗 -->
+    <div id="wechatModal" class="wechat-modal">
+        <div class="modal-overlay" onclick="closeWechatQR()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>扫码添加微信</h3>
+                <button class="close-btn" onclick="closeWechatQR()">×</button>
+            </div>
+            <div class="modal-body">
+                <img src="443ae9a90186961a5022eeee690d50dd.jpg" alt="微信二维码" class="qr-code-image">
+                <p class="qr-tip">使用微信扫一扫添加好友</p>
+                <div class="wechat-info">
+                    <span class="wechat-id">微信号：z18503550869</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 我的个人网站. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 微信二维码弹窗功能
+        function openWechatQR() {
+            const modal = document.getElementById('wechatModal');
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.classList.add('show');
+            }, 10);
+        }
+
+        function closeWechatQR() {
+            const modal = document.getElementById('wechatModal');
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        }
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 导航栏活跃状态
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
